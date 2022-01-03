@@ -37,7 +37,7 @@ public class TourPage extends BasePage {
     public void inputDestination (String Destination) throws InterruptedException {
         By selectContainer = By.xpath(".//span[@aria-labelledby='select2-tours_city-container']");
         By inputResult = By.xpath(".//input[@class='select2-search__field']");
-        By selectResult = By.xpath(".//li[contains(normalize-space(.),'Singapore')]");
+        By selectResult = By.xpath(String.format(".//li[contains(normalize-space(.),'%s')]", Destination));
 
         Thread.sleep(1000);
 
