@@ -8,8 +8,6 @@ public class Account {
     private String password;
     private String accountType;
 
-
-
     public String getFirstName() {
 
         return firstName;

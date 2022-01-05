@@ -28,10 +28,13 @@ public class BasePage {
 
     protected void scrollClick(WebElement el) {
         jsExecutor.executeScript("arguments[0].scrollIntoView({block: 'center', inline: 'nearest'});", el);
+//        jsExecutor.executeScript("window.scrollBy(0,250)");
         webDriverWait
                 .until(ExpectedConditions.elementToBeClickable(el))
                 .click();
     }
+
+
 
     protected void click(WebElement el) {
         webDriverWait

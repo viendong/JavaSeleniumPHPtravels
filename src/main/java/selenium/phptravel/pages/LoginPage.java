@@ -17,6 +17,9 @@ public class LoginPage extends BasePage {
     @FindBy(xpath = "//div[@class='message']/div[@class='alert alert-danger failed']")
     private WebElement elErrorMessage;
 
+    @FindBy(xpath = "//a[contains(text(),' Dashboard') and @class =' waves-effect' ]")
+    private WebElement elDashbroad;
+
     public LoginPage(WebDriver webDriver) {
         super(webDriver);
     }
@@ -41,6 +44,10 @@ public class LoginPage extends BasePage {
         inputEmail(email);
         inputPassword(password);
         clickLogin();
+    }
+
+    public String getDashbroad(){
+        return elDashbroad.getText();
     }
 
 }

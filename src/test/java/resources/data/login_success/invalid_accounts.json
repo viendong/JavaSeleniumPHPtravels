@@ -1,0 +1,42 @@
+[
+  {
+    "firstName" : "",
+    "lastName" : "Dong",
+    "phone" : "0123456789",
+    "email" : "viendong.customer@gmail.com",
+    "password" : "123456",
+    "accountType" : "Customer"
+  },
+  {
+    "firstName" : "Vo",
+    "lastName" : "",
+    "phone" : "0123456789",
+    "email" : "viendong.supplier@gmail.com",
+    "password" : "123456",
+    "accountType" : "Supplier"
+  },
+  {
+    "firstName" : "Vo",
+    "lastName" : "Dong",
+    "phone" : "",
+    "email" : "viendong.agent@gmail.com",
+    "password" : "123456",
+    "accountType" : "Agent"
+  },
+  {
+    "firstName" : "Vo",
+    "lastName" : "Dong",
+    "phone" : "0123456789",
+    "email" : "",
+    "password" : "123456",
+    "accountType" : "Customer"
+  },
+  {
+    "firstName" : "Vo",
+    "lastName" : "Dong",
+    "phone" : "0123456789",
+    "email" : "viendong.agent@gmail.com",
+    "password" : "",
+    "accountType" : "Customer"
+  }
+]
