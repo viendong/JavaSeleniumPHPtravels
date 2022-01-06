@@ -10,22 +10,25 @@ import selenium.phptravel.dto.Account;
 public class SignupPage extends BasePage{
 
     @FindBy (xpath = ".//input[@name='first_name']")
-    private WebDriver tbFirstName;
+    private WebElement tbFirstName;
 
     @FindBy (xpath = ".//input[@name='last_name']")
-    private WebDriver tbLastName;
+    private WebElement tbLastName;
 
-    @FindBy (xpath = "phone")
-    private WebDriver tbPhone;
+    @FindBy (xpath = ".//input[@name='phone']")
+    private WebElement tbPhone;
 
-    @FindBy (xpath = "email")
-    private WebDriver tbEmail;
+    @FindBy (xpath = ".//input[@name='email']")
+    private WebElement tbEmail;
 
-    @FindBy (xpath = "password")
-    private WebDriver tbPass;
+    @FindBy (xpath = ".//input[@name='password']")
+    private WebElement tbPass;
 
     @FindBy(xpath = "//button[normalize-space(.)='Signup']")
-    private WebDriver btnSignup;
+    private WebElement btnSignup;
+
+    @FindBy(xpath = ".//h5[@class='modal-title title']")
+    private WebElement elTitle;
 
     public SignupPage(WebDriver webDriver) {
 
@@ -33,56 +36,56 @@ public class SignupPage extends BasePage{
     }
 
     public void inputFirstName(String firstname) {
-
-        inputText((By) tbFirstName, firstname);
+        inputText(tbFirstName,firstname);
     }
 
     public void inputLastName(String lastname) {
 
-        inputText((By) tbLastName, lastname);
+        inputText( tbLastName, lastname);
     }
 
     public void inputPhone(String phone) {
 
-        inputText((By) tbPhone, phone);
+        inputText(tbPhone, phone);
     }
 
     public void inputEmail(String email) {
 
-        inputText((By) tbEmail, email);
+        inputText(tbEmail, email);
     }
 
     public void inputPassword(String password) {
-        inputText((By) tbPass, password);
+        inputText(tbPass, password);
     }
 
     public void clickSignup() {
-        scrollClick((WebElement) btnSignup);
+        scrollClick( btnSignup);
     }
 
     public WebElement getTbFirstName() {
-        return (WebElement) tbFirstName;
+        return tbFirstName;
     }
 
     public WebElement getTbLastName() {
-        return (WebElement) tbLastName;
+        return tbLastName;
     }
 
     public WebElement getTbPhone() {
-        return (WebElement) tbPhone;
+        return tbPhone;
     }
 
     public WebElement getTbEmail() {
-        return (WebElement) tbEmail;
+        return tbEmail;
     }
 
     public WebElement getTbPassword() {
-        return (WebElement) tbPass;
+        return  tbPass;
     }
 
     public WebElement getBtnSignup() {
-        return (WebElement) btnSignup;
+        return  btnSignup;
     }
+
 
     public void selectAccountType(String accountType) {
         By by = By.id("select2-account_type-container");
@@ -92,18 +95,20 @@ public class SignupPage extends BasePage{
         scrollClick(webDriver.findElement(byAccountType));
     }
 
-    public void signup(String firstname, String lastname, String phone, String email, String password, String accountType) {
+    public void signup(String firstname, String lastname, String phone, String email, String password, String accountType) throws InterruptedException {
         inputFirstName(firstname);
         inputLastName(lastname);
         inputPhone(phone);
+        scrollPixel();
         inputEmail(email);
         inputPassword(password);
         selectAccountType(accountType);
 
         clickSignup();
+        Thread.sleep(5000);
     }
 
-    public void signup(Account account) {
+    public void signup(Account account) throws InterruptedException {
         signup(
                 account.getFirstName(),
                 account.getLastName(),
@@ -137,5 +142,8 @@ public class SignupPage extends BasePage{
                 .getAttribute("validationMessage");
     }
 
+    public String getTitle(){
+        return elTitle.getText();
+    }
 
 }

@@ -12,7 +12,7 @@ import java.time.Duration;
 
 public class BasePage {
 
-    protected WebDriver webDriver;
+    protected static WebDriver webDriver;
     protected WebDriverWait webDriverWait;
     protected JavascriptExecutor jsExecutor;
 
@@ -67,5 +67,8 @@ public class BasePage {
         jsExecutor.executeScript("arguments[0].setAttribute('value', arguments[1]);", el, text);
     }
 
+    public void scrollPixel() {
+        jsExecutor.executeScript("window.scrollBy(0,500)");
+    }
 
 }

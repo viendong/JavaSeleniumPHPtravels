@@ -1,0 +1,26 @@
+[
+  {
+    "firstName" : "Vo",
+    "lastName" : "Dong",
+    "phone" : "0123456789",
+    "email" : "viendong@gmail.com",
+    "password" : "Test@123",
+    "accountType" : "Customer"
+  },
+  {
+    "firstName" : "Vo",
+    "lastName" : "Dong",
+    "phone" : "0123456789",
+    "email" : "viendong.supplier@gmail.com",
+    "password" : "Test@123",
+    "accountType" : "Supplier"
+  },
+  {
+    "firstName" : "Vo",
+    "lastName" : "Dong",
+    "phone" : "0123456789",
+    "email" : "viendong.agent@gmail.com",
+    "password" : "Test@123",
+    "accountType" : "Agent"
+  }
+]

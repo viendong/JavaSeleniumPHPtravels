@@ -14,15 +14,9 @@ import selenium.phptravel.tests.dataprovider.AccountDataProviders;
 
 public class SignupTests extends BaseTest{
 
-    @Test
-    public void AccessWeb() throws InterruptedException {
-        webDriver.get("https://www.phptravels.net/login");
-        Thread.sleep(1000);
-    }
-
 
     @Test(dataProvider = "JSONInvalidAccounts", dataProviderClass = AccountDataProviders.class)
-    public void signUpFail(Account account) {
+    public void signUpFail(Account account) throws InterruptedException {
         webDriver.get("https://www.phptravels.net/login");
         String message = "Please fill out this field.";
 
@@ -39,25 +33,34 @@ public class SignupTests extends BaseTest{
         }
     }
 
-    @Test (dataProvider = "Valid_Accounts")
-    public void SignUpSeccess(String firstname, String lastname, String phone, String email, String password, String accountType) throws InterruptedException {
+    @Test(dataProvider = "JSONValidAccounts", dataProviderClass = AccountDataProviders.class)
+    public void signUpSuccess(Account account) throws InterruptedException {
         webDriver.get("https://www.phptravels.net/login");
 
-        Thread.sleep(1000);
-        SignupPage signupPage = new SignupPage(webDriver);
-        signupPage.signup(firstname, lastname, phone, email, password, accountType);
+        HeaderTopBar headerTopBar = new HeaderTopBar(webDriver);
+        SignupPage signupPage = headerTopBar.openSignupPage();
+        signupPage.signup(account);
+        Thread.sleep(5000);
 
-        Thread.sleep(1000);
+        Assert.assertEquals(signupPage.getTitle(),"Login");
     }
 
-    @DataProvider(name = "Valid_Accounts")
-    public Object[][] invalidAccount() {
-        return new Object[][]
-                {
-                        {"Vo","Dong", "0123456789","viendong.agent@gmail.com","Test@123","Agent"},
-                        {"Vo","Dong", "0123456789","viendong.supplier@gmail.com","Test@123","Supplier"},
-                        {"Vo","Dong", "0123456789","viendong.customer@gmail.com","Test@123","Customer"}
-                };
-    }
+    @Test
+    public void SignUp1Account() throws InterruptedException {
+        webDriver.get("https://www.phptravels.net/login");
 
+        HeaderTopBar headerTopBar = new HeaderTopBar(webDriver);
+        headerTopBar.cookieGotIt();
+        SignupPage signupPage = headerTopBar.openSignupPage();
+
+        String firstname="Vo";
+        String lastname="Dong";
+        String phone="0123456789";
+        String email="viendong.agent@gmail.com";
+        String password="Test@123";
+        String accountType="Agent";
+
+        signupPage.signup(firstname,lastname,phone,email, password, accountType);
+        Assert.assertEquals(signupPage.getTitle(),"Login");
+    }
 }

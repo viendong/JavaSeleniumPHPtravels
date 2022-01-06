@@ -4,6 +4,7 @@ package selenium.phptravel.pages.components;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import selenium.phptravel.pages.SignupPage;
 import selenium.phptravel.pages.TourPage;
 
 import selenium.phptravel.pages.BasePage;
@@ -30,6 +31,7 @@ public class HeaderMenu extends BasePage {
     @FindBy(linkText = "Blog")
     private WebElement lkBlog;
 
+
     public HeaderMenu(WebDriver webDriver) {
         super(webDriver);
     }
@@ -38,6 +40,7 @@ public class HeaderMenu extends BasePage {
 //        scrollClick(lkHotels);
 //        return new HotelPage(webDriver);
 //    }
+
 
     public TourPage openTourPage() {
         scrollClick(lkTours);

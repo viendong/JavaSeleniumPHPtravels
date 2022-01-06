@@ -29,10 +29,16 @@ public class TourPage extends BasePage {
     @FindBy(id = "tours_child")
     private WebElement tbChild;
 
+    @FindBy(id="submit")
+    private WebElement btnSearch;
+
     public TourPage(WebDriver webDriver) {
         super(webDriver);
     }
 
+    public void scrollPixel() {
+        jsExecutor.executeScript("window.scrollBy(0,500)");
+    }
 
     public void inputDestination (String Destination) throws InterruptedException {
         By selectContainer = By.xpath(".//span[@aria-labelledby='select2-tours_city-container']");
@@ -67,5 +73,19 @@ public class TourPage extends BasePage {
 
         selectAdults(adults);
         selectChild(child);
+
+    }
+
+    public void clickSearch(){
+        click(btnSearch);
+    }
+
+    public SearchTourPage Search(String destination, String date, int adults, int child) throws ParseException, InterruptedException {
+        inputDestination(destination);
+        selectDate(date);
+        setTravellers( adults, child);
+        click(btnSearch);
+
+        return new SearchTourPage(webDriver);
     }
 }
