@@ -90,11 +90,4 @@ public class TourCard {
                 && this.getPrice() == tourCard.getPrice();
     }
 
-//    public boolean compare(TourCard tourCard) {
-//        return this.getName().equals(tourCard.getName())
-//                && this.getLocation().equals(tourCard.getLocation())
-//                && this.getStars() == tourCard.getStars()
-//                && this.getCurrency() == tourCard.getCurrency()
-//                && this.getPrice() == tourCard.getPrice();
-//    }
 }
