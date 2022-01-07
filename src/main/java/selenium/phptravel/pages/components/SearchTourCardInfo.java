@@ -7,18 +7,17 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import selenium.phptravel.dto.TourCard;
 import selenium.phptravel.pages.BasePage;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class SearchTourCardInfo extends BasePage {
 
-    private String tourName;
+    private String destination;
     private final WebElement container;
 
-    public SearchTourCardInfo(WebDriver webDriver, String tourName) {
+    public SearchTourCardInfo(WebDriver webDriver, String destination) {
         super(webDriver);
-        this.tourName = tourName;
-        this.container = webDriver.findElement(By.id(tourName.toLowerCase()));
+        By byContainer = By.xpath(String.format(".//h3[@class='card-title' and normalize-space(.)='%s']",destination));
+        this.destination = destination;
+        this.container = webDriver.findElement(By.id(destination.toLowerCase()));
     }
 
     public SearchTourCardInfo(WebDriver webDriver, WebElement container) {
@@ -28,7 +27,7 @@ public class SearchTourCardInfo extends BasePage {
 
     public TourCard getTourCard() {
         TourCard tourCard = new TourCard();
-        tourCard.setName(getTourName());
+        tourCard.setName(getDestination());
         tourCard.setLocation(getLocation());
         tourCard.setStars(getStars());
         tourCard.setRatings(getRatings());
@@ -38,10 +37,10 @@ public class SearchTourCardInfo extends BasePage {
         return tourCard;
     }
 
-    private String getTourName() {
-        By byHotelName = By.xpath(".//h3[@class='card-title']");
+    private String getDestination() {
+        By byTourName = By.xpath(".//h3[@class='card-title']");
         return webDriverWait
-                .until(ExpectedConditions.visibilityOf(container.findElement(byHotelName)))
+                .until(ExpectedConditions.visibilityOf(container.findElement(byTourName)))
                 .getText()
                 .trim();
     }

@@ -10,15 +10,11 @@ import selenium.phptravel.pages.SignupPage;
 
 public class HeaderTopBar extends BasePage {
 
-    @FindBy(linkText = "Signup")
+    @FindBy(linkText ="Signup")
     private WebElement lkSignup;
 
-    @FindBy(id = "cookie_stop")
+    @FindBy(id ="cookie_stop")
     private WebElement btnGotIt;
-
-//    @FindBy(linkText = "Login")
-//    private WebElement lkLogin;
-
 
     public HeaderTopBar(WebDriver webDriver) {
         super(webDriver);
@@ -28,11 +24,6 @@ public class HeaderTopBar extends BasePage {
         scrollClick(lkSignup);
         return new SignupPage(webDriver);
     }
-
-//    public LoginPage openLoginPage() {
-//        scrollClick(lkLogin);
-//        return new LoginPage(webDriver);
-//    }
 
     public void cookieGotIt() {
         scrollClick(btnGotIt);

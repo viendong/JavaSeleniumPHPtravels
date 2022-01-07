@@ -15,7 +15,7 @@ import java.util.List;
 public class AccountDataProviders {
     @DataProvider(name = "JSONValidAccounts")
     public static Object[][] jsonValidAccounts() throws IOException {
-        File fileValidAccounts = new File("src/test/java/resources/data/login_success/valid_accounts.json");
+        File fileValidAccounts = new File("src/test/java/resources/data/login/valid_accounts.json");
         ObjectMapper mapper = new ObjectMapper();
 
         List<Account> accountList = mapper.readValue(fileValidAccounts, new TypeReference<List<Account>>() {});
@@ -29,7 +29,7 @@ public class AccountDataProviders {
 //
     @DataProvider(name = "JSONInvalidAccounts")
     public static Object[][] jsonInvalidAccounts() throws IOException {
-        File fileValidAccounts = new File("src/test/java/resources/data/login_success/invalid_accounts.json");
+        File fileValidAccounts = new File("src/test/java/resources/data/login/invalid_accounts.json");
         ObjectMapper mapper = new ObjectMapper();
         List<Account> accountList = mapper.readValue(fileValidAccounts, new TypeReference<List<Account>>() {});
         Object[][] validAccounts = new Object[accountList.size()][];

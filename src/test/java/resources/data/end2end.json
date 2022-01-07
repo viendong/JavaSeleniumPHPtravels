@@ -1,0 +1,92 @@
+[
+  {
+    "account" : {
+    "firstName" : "Vo",
+    "lastName" : "Dong",
+    "phone" : "0123456789",
+    "email" : "viendong@gmail.com",
+    "password" : "Test@123",
+    "accountType" : "Customer"
+    },
+    "filters" : {
+      "destination": "Amersfoort",
+      "date" : "09/01/2022",
+      "adults" : 2,
+      "child" : 1
+    },
+    "results" :[
+      {
+        "currency": "USD",
+        "location": "Amersfoort",
+        "name": "Private Day Trip to Amersfoort from Amsterdam with a local",
+        "price": 137.0,
+        "ratings": 0,
+        "stars": 0
+      },
+      {
+        "currency": "USD",
+        "location": "Amersfoort",
+        "name": "WhatsApp Murder trip Amersfoort",
+        "price": 74.0,
+        "ratings": 0,
+        "stars": 0
+      },
+      {
+        "currency": "USD",
+        "location": "Amersfoort",
+        "name": "Walk and Explore Amersfoort with the interactive Qula City Trail",
+        "price": 37.0,
+        "ratings": 0,
+        "stars": 0
+      },
+      {
+        "currency": "USD",
+        "location": "Amersfoort",
+        "name": "Private Day Trip to Amersfoort from Rotterdam with a local",
+        "price": 162.0,
+        "ratings": 0,
+        "stars": 0
+      },
+      {
+        "currency": "USD",
+        "location": "Amersfoort",
+        "name": "Private 1 23 persons Taxi or Bus Transfer Amsterdam Airport to Amersfoort",
+        "price": 231.0,
+        "ratings": 0,
+        "stars": 0
+      },
+      {
+        "currency": "USD",
+        "location": "Amersfoort",
+        "name": "Anne Frank in Holland",
+        "price": 518.0,
+        "ratings": 5,
+        "stars": 5
+      },
+      {
+        "currency": "USD",
+        "location": "Amersfoort",
+        "name": "Anne Frank in Westerbork",
+        "price": 340.0,
+        "ratings": 5,
+        "stars": 5
+      },
+      {
+        "currency": "USD",
+        "location": "Amersfoort",
+        "name": "Breweries of Amsterdam on wheels",
+        "price": 95.0,
+        "ratings": 0,
+        "stars": 0
+      },
+      {
+        "currency": "USD",
+        "location": "Amersfoort",
+        "name": "Private Walking Tour in Utrecht",
+        "price": 138.0,
+        "ratings": 0,
+        "stars":0
+      }
+    ]
+  }
+]

@@ -17,6 +17,13 @@ import java.util.List;
 public class TourTests extends BaseTest{
 
     @Test
+    public void AccessTour(){
+        webDriver.get("https://www.phptravels.net/login");
+
+        HeaderMenu headerMenu = new HeaderMenu(webDriver);
+        headerMenu.openTourPage();
+    }
+    @Test
     public void SearchTours() throws InterruptedException, ParseException {
         webDriver.get("https://www.phptravels.net/login");
 
@@ -25,6 +32,8 @@ public class TourTests extends BaseTest{
 
         HeaderMenu headerMenu = new HeaderMenu(webDriver);
         TourPage tourPage = headerMenu.openTourPage();
+
+        Thread.sleep(1000);
 
         String destination = "Amersfoort";
         String date ="09/01/2022";
@@ -53,7 +62,7 @@ public class TourTests extends BaseTest{
     }
 
     @Test
-    public void searchHotelTest() throws ParseException, JsonProcessingException, InterruptedException {
+    public void searchTourTest() throws ParseException, JsonProcessingException, InterruptedException {
         webDriver.get("https://www.phptravels.net/login");
 
         String destination = "Amersfoort";
@@ -68,8 +77,8 @@ public class TourTests extends BaseTest{
                 "{\"name\":\"Walk and Explore Amersfoort with the interactive Qula City Trail\",\"location\":\"Amersfoort\",\"stars\":0,\"ratings\":0,\"currency\":\"USD\",\"price\":37},\n" +
                 "{\"name\":\"Private Day Trip to Amersfoort from Rotterdam with a local\",\"location\":\"Amersfoort\",\"stars\":0,\"ratings\":0,\"currency\":\"USD\",\"price\":162},\n" +
                 "{\"name\":\"Private 1 23 persons Taxi or Bus Transfer Amsterdam Airport to Amersfoort\",\"location\":\"Amersfoort\",\"stars\":0,\"ratings\":0,\"currency\":\"USD\",\"price\":231},\n" +
-                "{\"name\":\"Anne Frank in Westerbork\",\"location\":\"Amersfoort\",\"stars\":5,\"ratings\":5,\"currency\":\"USD\",\"price\":341},\n" +
-                "{\"name\":\"Anne Frank in Holland\",\"location\":\"Amersfoort\",\"stars\":5,\"ratings\":5,\"currency\":\"USD\",\"price\":519},\n" +
+                "{\"name\":\"Anne Frank in Westerbork\",\"location\":\"Amersfoort\",\"stars\":5,\"ratings\":5,\"currency\":\"USD\",\"price\":340},\n" +
+                "{\"name\":\"Anne Frank in Holland\",\"location\":\"Amersfoort\",\"stars\":5,\"ratings\":5,\"currency\":\"USD\",\"price\":518},\n" +
                 "{\"name\":\"Breweries of Amsterdam on wheels\",\"location\":\"Amersfoort\",\"stars\":0,\"ratings\":0,\"currency\":\"USD\",\"price\":95},\n" +
                 "{\"name\":\"Private Walking Tour in Utrecht\",\"location\":\"Amersfoort\",\"stars\":0,\"ratings\":0,\"currency\":\"USD\",\"price\":138}\n" +
                 "]";
@@ -85,8 +94,8 @@ public class TourTests extends BaseTest{
 
 
         Assert.assertEquals(actualTourCards.size(), expectedTourCards.size());
-        System.out.println("Ket qua thuc"+actualTourCards);
-        System.out.println("mong doi"+expectedTourCards);
+        System.out.println("ActualResult"+actualTourCards);
+        System.out.println("ExpectedResult"+expectedTourCards);
         Assert.assertTrue(actualTourCards.containsAll(expectedTourCards));
         Assert.assertTrue(expectedTourCards.containsAll(actualTourCards));
     }

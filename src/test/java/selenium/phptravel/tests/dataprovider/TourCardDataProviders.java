@@ -6,6 +6,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.testng.annotations.DataProvider;
 import org.testng.reporters.Files;
+import selenium.phptravel.dto.Account;
 import selenium.phptravel.dto.FilterResult;
 import selenium.phptravel.dto.TourCard;
 import selenium.phptravel.dto.TourSearchFilter;
@@ -16,17 +17,26 @@ import java.util.List;
 
 public class TourCardDataProviders {
 
-    @DataProvider(name = "FilterResult")
-    public static Object[][] filterResult() throws IOException {
-        File fileSearchDataDriven = new File("src/test/java/resources/data/search_tour.json");
+    @DataProvider(name = "CardTourTestDataProvider")
+    public static Object[][] cardTourTestDataProvider() throws IOException {
+        File fileSearchDataDriven = new File("src/test/java/resources/data/end2end.json");
         ObjectMapper mapper = new ObjectMapper();
 
-        List<FilterResult> filterResults = mapper.readValue(fileSearchDataDriven, new TypeReference<List<FilterResult>>() {});
-        Object[][] array = new Object[filterResults.size()][];
-        for (int i = 0; i < filterResults.size(); i++) {
-            Object[] fr = new Object[] {filterResults.get(i)};
-            array[i] = fr;
+        JSONArray testData = new JSONArray(Files.readFile(fileSearchDataDriven));
+        Object [][] array = new Object[testData.length()][];
+
+        for (int i = 0; i < testData.length(); i++) {
+
+            JSONObject data = (JSONObject) testData.get(i);
+
+            Account account = mapper.readValue(data.getJSONObject("account").toString(), Account.class);
+            TourSearchFilter filter = mapper.readValue(data.getJSONObject("filters").toString(), TourSearchFilter.class);
+            List<TourCard> tourCards = mapper.readValue(data.getJSONArray("results").toString(), new TypeReference<List<TourCard>>() {});
+
+            Object [] tc = new Object[]{account, filter, tourCards};
+            array[i] = tc;
         }
+
         return array;
     }
 

@@ -6,7 +6,9 @@ public class TourSearchFilter {
     int adults;
     int child;
 
-    public TourSearchFilter(){}
+    public TourSearchFilter(){
+
+    }
 
     public TourSearchFilter(String destination, String date, int adults, int child) {
         this.destination = destination;
@@ -15,11 +17,11 @@ public class TourSearchFilter {
         this.child = child;
     }
 
-    public String getTourName() {
+    public String getDestination() {
         return destination;
     }
 
-    public void setTourName(String tourName) {
+    public void setDestination(String tourName) {
         this.destination = tourName;
     }
 

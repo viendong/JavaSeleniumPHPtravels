@@ -45,7 +45,7 @@ public class LoginTests extends BaseTest{
 
 
     @Test (dataProvider = "InvalidAccounts")
-    public void loginFailTests(String email, String password) throws InterruptedException {
+    public void loginFailTest(String email, String password) throws InterruptedException {
         webDriver.get("https://www.phptravels.net/login");
 
         LoginPage loginPage = new LoginPage(webDriver);

@@ -4,14 +4,17 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import selenium.phptravel.dto.TourCard;
+import selenium.phptravel.dto.TourSearchFilter;
+import selenium.phptravel.pages.components.SearchTourCardInfo;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class TourPage extends BasePage {
-    @FindBy(xpath = ".//a[text()='Tours']")
-    private WebElement lkTours;
 
     @FindBy(xpath = "//input[@class='select2-search__field']")
     private WebElement tbDestination;
@@ -32,9 +35,13 @@ public class TourPage extends BasePage {
     @FindBy(id="submit")
     private WebElement btnSearch;
 
+    @FindBy(id = "data")
+    private WebElement elContainer;
+
     public TourPage(WebDriver webDriver) {
         super(webDriver);
     }
+
 
     public void scrollPixel() {
         jsExecutor.executeScript("window.scrollBy(0,500)");
@@ -87,5 +94,24 @@ public class TourPage extends BasePage {
         click(btnSearch);
 
         return new SearchTourPage(webDriver);
+    }
+
+    public SearchTourPage Search(TourSearchFilter card) throws ParseException, InterruptedException {
+        return Search(card.getDestination(),
+                card.getDate(),
+                card.getAdults(),
+                card.getChild());
+    }
+
+    public List<TourCard> getCardTourList(){
+        List<WebElement> tourContainer = elContainer.findElements(By.xpath(".//div[@class='card-item card-item-list']"));
+        List<TourCard> tourCards = new ArrayList<>();
+
+        for (WebElement container : tourContainer){
+            SearchTourCardInfo searchTourCardInfo = new SearchTourCardInfo(webDriver,container);
+            tourCards.add(searchTourCardInfo.getTourCard());
+        }
+
+        return  tourCards;
     }
 }
