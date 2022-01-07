@@ -40,16 +40,4 @@ public class AccountDataProviders {
         return validAccounts;
     }
 
-//
-//    @DataProvider(name = "accounts")
-//    public Object[][] accounts() throws IOException {
-//        File fileValidAccounts = new File("src/test/resources/data/login_success/valid_accounts.json");
-//        JSONArray jsonArrayValidAccounts = new JSONArray(Files.readFile(fileValidAccounts));
-//        Object[][] validAccounts = new Object[jsonArrayValidAccounts.length()][];
-//        for (int i = 0; i < jsonArrayValidAccounts.length(); i++) {
-//            Object[] account = new Object[]{jsonArrayValidAccounts.getJSONObject(i)};
-//            validAccounts[i] = account;
-//        }
-//        return validAccounts;
-//    }
 }
